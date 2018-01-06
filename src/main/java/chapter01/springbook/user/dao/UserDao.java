@@ -23,7 +23,7 @@ public class UserDao {
         Class.forName("com.mysql.jdbc.Driver");
         Connection c= DriverManager.getConnection("jdbc:mysql://localhost/springbook","root","");
 
-        PreparedStatement ps = c.prepareStatement("select * form users where id =?");
+        PreparedStatement ps = c.prepareStatement("select * from users where id =?");
         ps.setString(1, id);
 
         ResultSet rs = ps.executeQuery();
@@ -40,10 +40,23 @@ public class UserDao {
         return user;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao dao = new UserDao();
 
         User user = new User();
+        user.setId("whiteship");
+        user.setName("백기선");
+        user.setPassword("married");
+
+        dao.add(user);
+
+        System.out.println(user.getId() + " 등록성공");
+
+        User user2 = dao.get(user.getId());
+        System.out.println(user2.getName());
+        System.out.println(user2.getPassword());
+        System.out.println(user2.getId() + " 조회성공");
+
 
     }
 }
