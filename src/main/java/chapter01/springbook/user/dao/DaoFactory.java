@@ -12,6 +12,6 @@ public class DaoFactory {
     }
 @Bean
     public ConnectionMaker connectionMaker(){
-        return new UserDao.DConnectionMaker();
+        return new DConnectionMaker();
     }
 }
