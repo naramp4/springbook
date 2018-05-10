@@ -41,7 +41,6 @@ public class UserDaoTest {
 
         dao.deleteAll();
         assertEquals(0, dao.getCount());
-
         dao.add(user1);
         dao.add(user2);
         assertEquals(2, dao.getCount());
